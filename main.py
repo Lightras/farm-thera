@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import dataImporter
+import data_importer as di
 import pandas as pd
 
 
@@ -7,21 +7,12 @@ def calc_h(s):
     print(s)
 
 
-data = dataImporter.read_data()
-# data.hist(column='days')
-# plt.show()
-#
-# data.loc[:, 'days'].hist(cumulative=True)
-# plt.show()
+data = di.read_data()
 
 max_days = data['days'].max()
 full_index = [x for x in range(1, max_days + 1)]
 distribution = data['days'].value_counts().sort_index().reindex(index=full_index, fill_value=0)
 
-
-# x = pd.DataFrame(distribution).values
-# min_max_scaler = preprocessing.MinMaxScaler()
-# x_scaled = min_max_scaler.fit_transform(x)
 distribution_normalized = distribution / distribution.sum()
 
 distribution = distribution_normalized
