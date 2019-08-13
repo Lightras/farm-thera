@@ -3,11 +3,9 @@ import data_importer as di
 import pandas as pd
 
 
-def calc_h(s):
-    print(s)
-
-
 data = di.read_data()
+
+avg_days = data['days'].mean()
 
 max_days = data['days'].max()
 full_index = [x for x in range(1, max_days + 1)]
@@ -34,9 +32,9 @@ plt.show()
 
 D_hosp = sum([H[i] * S[i-1] for i in full_index[1:-1]]) / S[1]
 
-# data_v_a = data[(data['virus'] == 'Так') & (data['therapy'] == 'Ні')]
-# data_v_b = data[(data['virus'] == 'Так') & (data['therapy'] == 'Так')]
-# data_n_a = data[(data['virus'] == 'Ні') & (data['therapy'] == 'Ні')]
-# data_n_b = data[(data['virus'] == 'Ні') & (data['therapy'] == 'Так')]
+data_v_a = data[(data['virus'] == 'Ні') & (data['therapy'] == 'Ні')]
+data_v_b = data[(data['virus'] == 'Ні') & (data['therapy'] == 'Так')]
+data_n_a = data[(data['virus'] == 'Так') & (data['therapy'] == 'Ні')]
+data_n_b = data[(data['virus'] == 'Так') & (data['therapy'] == 'Так')]
 
 print()
