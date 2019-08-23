@@ -35,9 +35,14 @@ def randomize(distr, N):
 
 
 d_n_a_distr = get_days_distribution(data_n_a)
-show(d_n_a_distr)
-r = randomize(d_n_a_distr, 100)
+# show(d_n_a_distr)
+d_n_a_rand = randomize(d_n_a_distr, 100)
 
+data_for_calc = []
+for data in [data_v_a, data_v_b, data_n_a, data_n_b]:
+    data_distr = get_days_distribution(data)
+    data_rand = randomize(data_distr, 100)
+    data_for_calc.append(data_rand)
 
 # distribution_cumulative = distribution.cumsum()
 # distribution_cumulative.plot.bar()
